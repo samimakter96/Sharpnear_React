@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import useVoting from '../hooks/useVoting';
+import React, { useContext, useState } from 'react';
+import { VotingContext } from '../store/VotingContext';
 
 function Form() {
-  const { handleFormSubmit, totalVotes } = useVoting();
+  const { handleFormSubmit, totalVotes } = useContext(VotingContext);
   const [studentName, setStudentName] = useState('');
   const [monitor, setMonitor] = useState('samim');
   const [showForm, setShowForm] = useState(false); // State to manage form visibility
@@ -10,18 +10,24 @@ function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleFormSubmit(studentName, monitor);
+    // after submitting from clearing the input fields
     setStudentName('');
   };
 
   return (
     <div>
-      <h1>Class Monitor Vote</h1>
-      <p>Total Votes: {totalVotes}</p>
-      {/* Show the "Add Vote" button only if the form is not already visible */}
-      {!showForm && <button onClick={() => setShowForm(true)}>Add Vote</button>}
+      <div className="class-monitor-voting">
+        <h1>Class Monitor Vote</h1>
+        <p>Total Votes: {totalVotes}</p>
+        {/* Show the "Add Vote" button only if the form is not already visible */}
+        {!showForm && (
+          <button onClick={() => setShowForm(true)}>Add New Votes</button>
+        )}
+      </div>
+
       {/* Show the form when the "Add Vote" button is clicked */}
       {showForm && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
           <label htmlFor="studentName">Student Name:</label>
           <input
             type="text"
@@ -45,8 +51,9 @@ function Form() {
           </select>
 
           <button type="submit">Vote</button>
+
           {/* Add a button to cancel adding a vote */}
-          <button onClick={() => setShowForm(false)}>Cancel</button>
+          <button className='cancel-button' onClick={() => setShowForm(false)}>Cancel</button>
         </form>
       )}
     </div>

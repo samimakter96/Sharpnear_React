@@ -11,20 +11,17 @@ export function VotingProvider({ children }) {
   };
 
   const handleDeleteVoter = (voterName, monitorName) => {
-    setVotes((prevVotes) =>
-      prevVotes.filter(
-        (vote) =>
-          !(vote.voterName === voterName && vote.monitorName === monitorName)
-      )
+    // if the voterName and monitorName match, it returns false (using the ! operator), indicating that this vote should be removed from the updated votes list.
+    const newUpdatedVotes = votes.filter(
+      (vote) =>
+        !(vote.voterName === voterName && vote.monitorName === monitorName)
     );
+    setVotes(newUpdatedVotes);
   };
 
-  const samimVotes = votes.filter(
-    (vote) => vote.monitorName === 'samim'
-  ).length;
-  const kartikVotes = votes.filter(
-    (vote) => vote.monitorName === 'kartik'
-  ).length;
+  // calculate the each individual candidate total votes
+  const samimVotes = votes.filter((vote) => vote.monitorName === 'samim').length;
+  const kartikVotes = votes.filter((vote) => vote.monitorName === 'kartik').length;
   const amanVotes = votes.filter((vote) => vote.monitorName === 'aman').length;
 
   const contextValue = {
