@@ -52,6 +52,7 @@ button:hover {
 /* Style for cancel button */
 .cancel-button, .delete-button {
   background-color: #f44336;
+  margin: 5px 5px;
 }
 
 .cancel-button:hover, .delete-button:hover {

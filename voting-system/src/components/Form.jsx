@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { VotingContext } from '../store/VotingContext';
 
 function Form() {
+
   const { handleFormSubmit, totalVotes } = useContext(VotingContext);
   const [studentName, setStudentName] = useState('');
   const [monitor, setMonitor] = useState('samim');
@@ -52,7 +53,7 @@ function Form() {
 
           <button type="submit">Vote</button>
 
-          {/* Add a button to cancel adding a vote */}
+          {/* Adding a cancel button for not showing the form */}
           <button className='cancel-button' onClick={() => setShowForm(false)}>Cancel</button>
         </form>
       )}

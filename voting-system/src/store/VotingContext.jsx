@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react';
 export const VotingContext = createContext();
 
 export function VotingProvider({ children }) {
+
   const [votes, setVotes] = useState([]);
 
   const handleFormSubmit = (studentName, monitor) => {
