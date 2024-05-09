@@ -10,3 +10,21 @@ body {
   margin: 0;
   background-color: #272727;
 }
+
+.delete-btn {
+  background-color: brown;
+  border: 1px solid #1261ac;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 20px;
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+.delete-btn:hover,
+.delete-btn:active {
+  background-color: rgb(228, 13, 13);
+  border-color: brown;
+}
