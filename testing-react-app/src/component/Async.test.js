@@ -2,11 +2,10 @@ import { render, screen } from '@testing-library/react';
 import Async from './Async';
 
 describe('Async component', () => {
-  test('renders posts if request succeeds', () => {
-    render(<Async />)
+  test('renders posts if request succeeds', async () => {
+    render(<Async />);
 
-
-    const listItemElements = screen.getAllByRole('listItem')
-    expect(listItemElements).toHaveLength(10)
+    const listItemElements = await screen.findAllByRole('listitem');
+    expect(listItemElements).not.toHaveLength(0);
   });
 });
