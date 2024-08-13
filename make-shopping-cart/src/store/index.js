@@ -1,15 +1,22 @@
-import { combineReducers, createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import productsReducer from "./slices/productSlice";
 import cartReducer from "./slices/cartSlice";
 import wishListReducer from "./slices/wishListSlice";
 
-const reducer = combineReducers({
-  products: productsReducer,
-  cartItems: cartReducer,
-  wishList: wishListReducer,
-});
 
-export const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__?.()
-);
+
+// const logger  = (store) => (next) => (action) => {
+//   console.log(store)
+//   console.log(next)
+//   console.log(action)
+//   next(action)
+// }
+
+export const store = configureStore({
+  reducer: {
+    products: productsReducer,
+    cartItems: cartReducer,
+    wishList: wishListReducer,
+  },
+  // middleware: [logger],
+});
